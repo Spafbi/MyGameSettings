@@ -1,6 +1,6 @@
 # Miscreated user.cfg
 
-Most of these settings come from https://steamcommunity.com/sharedfiles/filedetails/?id=416735848. Here are my settings and why I have them set to such:
+Most of these settings come from https://steamcommunity.com/sharedfiles/filedetails/?id=416735848. If you'd like to use my user.cfg, you may find click on it here: [user.cfg](user.cfg). Here are my settings and why I have them set to such:
 
 ## General settings
 Horizontal resolution  
