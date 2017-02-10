@@ -15,7 +15,7 @@ Sets the resolution and memory pool available to textures. An increase in textur
 I have two Nvidia GTX 770 GPUs running in SLI, so setting MultiGPU to 1 is how I need to be running. Other settings are: 0=disabled, 1=extra overhead to allow SLI (NVidia) or Crossfire (AMD), 2(default)=automatic detection (currently SLI only, means off for AMD) should be activated before rendering.  
 `r_MultiGPU=1`
 
-Fullscreen mode. 0=Window/1=Fullscreen  
+Fullscreen mode. 0=Window/1=Fullscreen - Yes, I start in windowed, mode, but then I *alt-enter* to switch to fullscreen... I have my reasons.  
 `r_Fullscreen=0`
 
 ## Performance settings
