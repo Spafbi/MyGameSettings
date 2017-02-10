@@ -56,3 +56,7 @@ Making sure I'm writing a log file, but am decreasing verbosity to the minimum.
 
 I want to be able to alt-tab, so I set this  
 `r_enableAltTab=1`
+
+## Other user's settings
+
+I found another good user.cfg created by Dukk1. The original Steam post is here: http://steamcommunity.com/sharedfiles/filedetails/?id=835715775. I've also mirrored his settings here: [Dukk1.cfg](Dukk1.cfg)
