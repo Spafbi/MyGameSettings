@@ -9,7 +9,7 @@ You will only need to execute this script to update your release copy once every
 time an update or hotfix is released by the dev team.
 
 ## How to use this script
-Download both [miscreated-rel-copy.cmd](https://github.com/Spafbi/MyGameSettings/raw/master/miscreated-rel-copy/miscreated-rel-copy.cmd) and [shortcut.exe](https://github.com/Spafbi/MyGameSettings/raw/master/miscreated-rel-copy/Shortcut.exe) by right-mouse-clicking the links and selecting _Save link as..._ and save them both to the same local directory on your computer.
+Download both [miscreated-rel-copy.cmd](https://raw.githubusercontent.com/Spafbi/MyGameSettings/master/miscreated-rel-copy/miscreated-rel-copy.cmd) and [shortcut.exe](https://github.com/Spafbi/MyGameSettings/raw/master/miscreated-rel-copy/Shortcut.exe) by right-mouse-clicking the links and selecting _Save link as..._ and save them both to the same local directory on your computer.
 
 Use a text editor, such as `notepad`, to edit the `MISDIR` and `RELDIR` variables
 in the `miscreated-rel-copy.cmd` file to reflect the locations where your
