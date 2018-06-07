@@ -43,4 +43,5 @@ Use the _Miscreated Live Release_ shortcut located on your Desktop.
 ## Copyrights
 Shortcut.exe is copyright "2000-2005 Marty List, www.OptimumX.com" and is
 provided here simply for convenience.
+
 As for my CMD code here... I don't really care about copyright for it.
