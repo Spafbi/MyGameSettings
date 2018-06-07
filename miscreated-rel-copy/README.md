@@ -39,12 +39,13 @@ Watch for the following message in the output of the script's console:
 operable program or batch file.
 ```
 If you happen to see that message, a quick fix is to close the console window,
-copy shortcut.exe to your `C:\Windows\System32` directory, and re-run the
+copy `shortcut.exe` to your `C:\Windows\System32` directory, and re-run the
 script.
 
-Explanation: That message occurs if for some reason the script cannot find
-`shortcut.exe` in locations provided by the `PATH` environment variable. While
-it _should_ be able to locate the file as it's in the same directory as the
+#### Explanation
+That message occurs if for some reason the script cannot find `shortcut.exe`
+in locations provided by the `PATH` environment variable. While it _should_ be
+able to locate the file as it's in the same directory as the
 `miscreated-rel-copy.cmd` script (you did put both files in the same directory,
 right?), but some methods on launching CMD scripts will change the working path
 resulting in the `shortcut.exe` file not being found. As `C:\Windows\System32`
