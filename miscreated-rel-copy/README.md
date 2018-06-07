@@ -61,7 +61,7 @@ To play the [dev] release version, simply launch Miscreated from within Steam.
 Use the _Miscreated Live Release_ shortcut located on your Desktop.
 
 ## Copyrights
-Shortcut.exe is copyright "2000-2005 Marty List, www.OptimumX.com" and is
+Shortcut.exe is _Copyright 2000-2005 Marty List, www.OptimumX.com_ and is
 provided as a direct download from here simply for convenience.
 
 As for my CMD code here... It's pretty much doodie and I don't really care
