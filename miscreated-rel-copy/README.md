@@ -32,6 +32,25 @@ Whenever you need to update the live release copy of the game, execute the
 `miscreated-rel-copy.cmd` script by using your mouse to click (or double-click) 
 the script, and then follow the onscreen instructions.
 
+### Note: `Shortcut.exe`
+Watch for the following message in the output of the script's console:
+```
+'shortcut' is not recognized as an internal or external command,
+operable program or batch file.
+```
+If you happen to see that message, a quick fix is to close the console window,
+copy shortcut.exe to your `C:\Windows\System32` directory, and re-run the
+script.
+
+Explanation: That message occurs if for some reason the script cannot find
+`shortcut.exe` in locations provided by the `PATH` environment variable. While
+it _should_ be able to locate the file as it's in the same directory as the
+`miscreated-rel-copy.cmd` script (you did put both files in the same directory,
+right?), but some methods on launching CMD scripts will change the working path
+resulting in the `shortcut.exe` file not being found. As `C:\Windows\System32`
+is virtually always found in the `PATH` environment variable, copying
+`shortcut.exe` to that path will allow it to virtually always be found.
+
 ## How to launch the game
 After having executed and followed the script's instructions, you should be able
 to play without having to switch branches and dowload new files each time you
