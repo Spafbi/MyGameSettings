@@ -1,4 +1,4 @@
-# Miscreated Release Copy CMD Script
+# Miscreated Live Release Copy CMD Script
 
 I've created this script to help Miscreated QA Testers maintain separate copies
 of the game for testing and playing the live release, respectively, and to help
