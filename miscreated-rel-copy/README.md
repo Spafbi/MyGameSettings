@@ -28,13 +28,13 @@ set MISDIR=D:\Program Files (x86)\Steam\steamapps\common\Miscreated
 set RELDIR=D:\Games\Miscreated
 ```
 
-Whenever you need to update the live release copy of the game, wxecute the
+Whenever you need to update the live release copy of the game, execute the
 `miscreated-rel-copy.cmd` script and follow the onscreen instructions.
 
 ## How to launch the game
 After having executed and followed the script's instructions, you should be able
 to play without having to switch branches and dowload new files each time you
-want to change environemnts.
+want to change environments.
 ### [dev] Release
 To play the [dev] release version, simply launch Miscreated from within Steam.
 ### Live Release
