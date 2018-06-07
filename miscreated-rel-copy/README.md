@@ -29,7 +29,8 @@ set RELDIR=D:\Games\Miscreated
 ```
 
 Whenever you need to update the live release copy of the game, execute the
-`miscreated-rel-copy.cmd` script and follow the onscreen instructions.
+`miscreated-rel-copy.cmd` script by using your mouse to click (or double-click) 
+the script, and then follow the onscreen instructions.
 
 ## How to launch the game
 After having executed and followed the script's instructions, you should be able
