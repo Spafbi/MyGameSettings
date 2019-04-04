@@ -88,13 +88,45 @@ if not exist "%MISSERVERBIN%" (
   pause
   exit /B
 )
+call :setupnp
 "%MISSERVERBIN%" %OPTIONS% +sv_maxplayers %MAXPLAYERS% +map islands +sv_servername "%SERVERNAME%" +http_startserver
+call :removeupnp
 goto start
 
 :getsteamcmd
 set STEAMARCHIVE="%BASEPATH%\steamcmd.zip"
 curl -L https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -o "%STEAMARCHIVE%"
 @powershell Expand-Archive -LiteralPath "%STEAMARCHIVE%" -DestinationPath "%STEAMCMDPATH%"
+goto :eof
+
+:setupnp
+"%UNPNCHELPER%\upnpc-shared.exe" -r 64090 UDP 64091 UDP 64092 UDP 64093 UDP 64094 TCP
+goto :eof
+
+:removeupnp
+"%UNPNCHELPER%\upnpc-shared.exe" -N 64094 64094 TCP
+"%UNPNCHELPER%\upnpc-shared.exe" -N 64090 64093 UDP
+goto :eof
+
+
+:createmanualremoveupnpscript
+@echo off
+echo @echo off> remove_upnp.cmd
+echo echo ### UPnP BEFORE ###>> remove_upnp.cmd
+echo upnpc\upnpc-shared.exe -L>> remove_upnp.cmd
+echo echo Removing RCON mapping...>> remove_upnp.cmd
+echo upnpc\upnpc-shared.exe -N 64094 64094 TCP>> remove_upnp.cmd
+echo echo Removing Miscreated UDP port mappings...>> remove_upnp.cmd
+echo upnpc\upnpc-shared.exe -N 64090 64093 UDP>> remove_upnp.cmd
+echo echo ### UPnP AFTER ###>> remove_upnp.cmd
+echo upnpc\upnpc-shared.exe -L>> remove_upnp.cmd
+echo pause>> remove_upnp.cmd
+goto :eof
+
+:getupnphelper
+set UPNPCARCHIVE="%BASEPATH%\upnpc-exe-win32-20150918.zip"
+curl -L http://miniupnp.tuxfamily.org/files/download.php?file=upnpc-exe-win32-20150918.zip -o "%UPNPCARCHIVE%"
+@powershell Expand-Archive -LiteralPath "%UPNPCARCHIVE%" -DestinationPath "%UNPNCHELPER%"
 goto :eof
 
 :setup
@@ -139,5 +171,14 @@ set OPTIONS=%WHITELISTED%
 if defined OPTIONS (
   echo Additional command line options: %OPTIONS%
 )
+
+set UNPNCHELPER=%BASEPATH%\upnpc
+if not exist "%UNPNCHELPER%" (
+  echo Creating directory: "%UNPNCHELPER%"...
+  md "%UNPNCHELPER%"
+  call :getupnphelper
+)
+
+call :createmanualremoveupnpscript
 
 call :start
