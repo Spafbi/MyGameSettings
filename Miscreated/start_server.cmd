@@ -16,6 +16,27 @@ echo %SERVERNAME%>"%VARIABLESDIR%\server_name.txt"
 echo CONFIG: The servername will be: %SERVERNAME%
 goto :eof
 
+:setfirewall
+if exist "%VARIABLESDIR%\upnp.txt" (
+  set /p ENABLEUPNP=<"%VARIABLESDIR%\enableupnp.txt"
+) else (
+  echo To allow your server to be found in the game server browser you need to open
+  echo firewall ports. Would like for firewall ports to be automatically forwarded?
+  echo Enter Y for yes, N for no.
+  set /p ENABLEUPNP="Enable UPnP [Y/N]: " || set ENABLEUPNP=DONTJUSTPRESSENTER
+)
+if /I "%ENABLEUPNP%"=="y" (
+  echo CONFIG: Firewall ports will be forwarded.
+) else if /I "%ENABLEUPNP%"=="n" (
+  echo CONFIG: Firewall ports will not be automatically forwarded...
+) else (
+  echo Please enter Y for yes, or N for no.
+  echo.
+  goto setupnp
+)
+echo %ENABLEUPNP%>"%VARIABLESDIR%\enableupnp.txt"
+goto :eof
+
 :setwhitelisted
 if exist "%VARIABLESDIR%\whitelisted.txt" (
   set /p WHITELISTED=<"%VARIABLESDIR%\whitelisted.txt"
@@ -84,13 +105,20 @@ echo.
 "%STEAMCMDBIN%" +login anonymous +force_install_dir %SERVERDIR% +app_update 302200 validate +quit
 set MISSERVERBIN=%SERVERDIR%\Bin64_dedicated\MiscreatedServer.exe
 if not exist "%MISSERVERBIN%" (
-  echo Something went wrong: The server may not have been installed by steamcmd.
+  echo =^> ERROR:
+  echo   Something went wrong: The server may not have been installed by steamcmd.
   pause
   exit /B
 )
-call :setupnp
+if /I "%ENABLEUPNP%"=="y" (
+  echo =^> Using UPnP to forward firewall ports...
+  call :setupnp
+)
 "%MISSERVERBIN%" %OPTIONS% +sv_maxplayers %MAXPLAYERS% +map islands +sv_servername "%SERVERNAME%" +http_startserver
-call :removeupnp
+if /I "%ENABLEUPNP%"=="y" (
+  echo =^> Removing UPnP entries...
+  call :removeupnp
+)
 goto start
 
 :getsteamcmd
@@ -138,6 +166,7 @@ if not exist "%VARIABLESDIR%" (
   echo.
 )
 call :setservername
+call :setfirewall
 call :setwhitelisted
 if /I %WHITELISTED%=="y" (
   set WHITELISTED=-mis_whitelist
